@@ -17,8 +17,7 @@
         <swiper-slide class="tabSlide">
           <scroller :on-infinite="infinite2" :on-refresh="refresh2" ref="my_scroller2">
             <div class="PostCards">
-              <!-- <post-card v-for="(item,index) in friendsPosts" :key="index" :data="item"></post-card> -->
-              <div v-for="(item,index) in friendsPosts" :key="index" :data="item">{{item}}</div>
+              <friend-post v-for="(item,index) in friendsPosts" :key="index" :data="item"></friend-post>
             </div>
           </scroller>
         </swiper-slide>
@@ -30,6 +29,7 @@
 
 <script>
   import PostCard from "@/views/post/PostCard"
+  import FriendPost from "@/views/post/FriendPost"
   import { swiper, swiperSlide } from "vue-awesome-swiper";
 
   import "swiper/dist/css/swiper.css";
@@ -39,7 +39,8 @@
     components: {
       swiper,
       swiperSlide,
-      PostCard
+      PostCard,
+      FriendPost
     },
     data () {
       return {
