@@ -1,0 +1,64 @@
+Date : 2021-08-25 20:43:45
+Directory : c:\Users\16473\Desktop\bbs\app
+Total : 24 files,  26087 codes, 132 comments, 147 blanks, all 26366 lines
+
+Languages
++------------+------------+------------+------------+------------+------------+
+| language   | files      | code       | comment    | blank      | total      |
++------------+------------+------------+------------+------------+------------+
+| JSON       |          2 |     25,161 |          0 |          2 |     25,163 |
+| Vue        |         11 |        613 |          3 |         42 |        658 |
+| CSS        |          3 |        198 |        127 |         83 |        408 |
+| JavaScript |          6 |         84 |          1 |         14 |         99 |
+| HTML       |          1 |         16 |          1 |          1 |         18 |
+| Markdown   |          1 |         15 |          0 |          5 |         20 |
++------------+------------+------------+------------+------------+------------+
+
+Directories
++--------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                         | files      | code       | comment    | blank      | total      |
++--------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                            |         24 |     26,087 |        132 |        147 |     26,366 |
+| public                                                       |          1 |         16 |          1 |          1 |         18 |
+| src                                                          |         17 |        858 |        131 |        137 |      1,126 |
+| src\assets                                                   |          3 |        198 |        127 |         83 |        408 |
+| src\assets\css                                               |          3 |        198 |        127 |         83 |        408 |
+| src\components                                               |          1 |         57 |          0 |          3 |         60 |
+| src\router                                                   |          1 |         22 |          1 |          5 |         28 |
+| src\store                                                    |          1 |         13 |          0 |          3 |         16 |
+| src\views                                                    |          9 |        527 |          3 |         35 |        565 |
+| src\views\home                                               |          5 |        288 |          0 |         21 |        309 |
+| src\views\login                                              |          1 |         17 |          0 |          3 |         20 |
+| src\views\post                                               |          3 |        222 |          3 |         11 |        236 |
++--------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++--------------------------------------------------------------+------------+------------+------------+------------+------------+
+| filename                                                     | language   | code       | comment    | blank      | total      |
++--------------------------------------------------------------+------------+------------+------------+------------+------------+
+| c:\Users\16473\Desktop\bbs\app\README.md                     | Markdown   |         15 |          0 |          5 |         20 |
+| c:\Users\16473\Desktop\bbs\app\babel.config.js               | JavaScript |          5 |          0 |          1 |          6 |
+| c:\Users\16473\Desktop\bbs\app\package-lock.json             | JSON       |     25,136 |          0 |          1 |     25,137 |
+| c:\Users\16473\Desktop\bbs\app\package.json                  | JSON       |         25 |          0 |          1 |         26 |
+| c:\Users\16473\Desktop\bbs\app\postcss.config.js             | JavaScript |         14 |          0 |          1 |         15 |
+| c:\Users\16473\Desktop\bbs\app\public\index.html             | HTML       |         16 |          1 |          1 |         18 |
+| c:\Users\16473\Desktop\bbs\app\src\App.vue                   | Vue        |         29 |          0 |          4 |         33 |
+| c:\Users\16473\Desktop\bbs\app\src\assets\css\base.css       | CSS        |         50 |          1 |         10 |         61 |
+| c:\Users\16473\Desktop\bbs\app\src\assets\css\custom.css     | CSS        |          5 |          0 |          0 |          5 |
+| c:\Users\16473\Desktop\bbs\app\src\assets\css\normalize.css  | CSS        |        143 |        126 |         73 |        342 |
+| c:\Users\16473\Desktop\bbs\app\src\components\HelloWorld.vue | Vue        |         57 |          0 |          3 |         60 |
+| c:\Users\16473\Desktop\bbs\app\src\main.js                   | JavaScript |         12 |          0 |          4 |         16 |
+| c:\Users\16473\Desktop\bbs\app\src\router\index.js           | JavaScript |         22 |          1 |          5 |         28 |
+| c:\Users\16473\Desktop\bbs\app\src\store\index.js            | JavaScript |         13 |          0 |          3 |         16 |
+| c:\Users\16473\Desktop\bbs\app\src\views\home\index.vue      | Vue        |         97 |          0 |          3 |        100 |
+| c:\Users\16473\Desktop\bbs\app\src\views\home\message.vue    | Vue        |         18 |          0 |          3 |         21 |
+| c:\Users\16473\Desktop\bbs\app\src\views\home\my.vue         | Vue        |         18 |          0 |          3 |         21 |
+| c:\Users\16473\Desktop\bbs\app\src\views\home\post.vue       | Vue        |        137 |          0 |          9 |        146 |
+| c:\Users\16473\Desktop\bbs\app\src\views\home\search.vue     | Vue        |         18 |          0 |          3 |         21 |
+| c:\Users\16473\Desktop\bbs\app\src\views\login\index.vue     | Vue        |         17 |          0 |          3 |         20 |
+| c:\Users\16473\Desktop\bbs\app\src\views\post\FriendPost.vue | Vue        |         14 |          0 |          3 |         17 |
+| c:\Users\16473\Desktop\bbs\app\src\views\post\PostCard.vue   | Vue        |        190 |          3 |          6 |        199 |
+| c:\Users\16473\Desktop\bbs\app\src\views\post\edit.vue       | Vue        |         18 |          0 |          2 |         20 |
+| c:\Users\16473\Desktop\bbs\app\vue.config.js                 | JavaScript |         18 |          0 |          0 |         18 |
+| Total                                                        |            |     26,087 |        132 |        147 |     26,366 |
++--------------------------------------------------------------+------------+------------+------------+------------+------------+
