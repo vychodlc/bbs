@@ -1,5 +1,5 @@
 <template>
-  <div class="card">
+  <div class="card" @click="$router.push({name:'PostDetail',params:{id:data.id}});">
     <div class="card-top">
       <span class="title">{{data.title}}</span>
     </div>
@@ -39,6 +39,7 @@
     data () {
       return {
         data: {
+          id: 1,
           title: '这是一篇帖子红红火火恍恍惚惚这是一篇帖子红红火火恍恍惚惚',
           content: '这是一篇帖子红红火火恍恍惚惚是一篇帖子红红火火恍恍惚惚这是一篇帖子红红火火恍恍惚惚是一篇帖子红红火火恍恍惚惚这是一篇帖子红红火火恍恍惚惚是一篇帖子红红火火恍恍惚惚',
           user: {

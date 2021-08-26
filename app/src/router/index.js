@@ -16,6 +16,7 @@ const routes = [
     ]
   },
   { path: '/post/edit',name: 'PostEdit',component: () => import('../views/post/edit.vue')},
+  { path: '/post/detail',name: 'PostDetail',component: () => import('../views/post/PostDetail.vue')},
 ]
 
 const router = new VueRouter({

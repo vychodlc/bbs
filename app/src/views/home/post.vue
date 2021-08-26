@@ -17,7 +17,7 @@
         <swiper-slide class="tabSlide">
           <scroller :on-infinite="infinite2" :on-refresh="refresh2" ref="my_scroller2">
             <div class="PostCards">
-              <friend-post v-for="(item,index) in friendsPosts" :key="index" :data="item"></friend-post>
+              <friend-post v-for="(item,index) in friendsPosts" :key="index" :data="item" :kind='kind'></friend-post>
             </div>
           </scroller>
         </swiper-slide>
@@ -44,6 +44,7 @@
     },
     data () {
       return {
+        kind: 'friendpost',
         currentTab: 0,
         currentPage: 0,
         swiperOption: {

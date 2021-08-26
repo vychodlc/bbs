@@ -1,5 +1,5 @@
 <template>
-  <div class="friend-post">
+  <div class="friend-post" @click="goDetail">
     <div class="card-top">
       <div class="avatar">
         <img :src="data.author.avatar" alt="">
@@ -15,6 +15,14 @@
         <div class="imgOne" v-if="data.images.length==1">
           <div class="image">
             <img :src="data.images[0]" alt="">
+          </div>
+        </div>
+        <div class="imgTwo" v-else-if="data.images.length==2">
+          <div class="image">
+            <img :src="data.images[0]" alt="">
+          </div>
+          <div class="image">
+            <img :src="data.images[1]" alt="">
           </div>
         </div>
         <div class="imgMuch" v-else>
@@ -45,9 +53,16 @@
 <script>
   export default {
     name: "FriendPost",
+    props: {
+      kind: {
+        type: String,
+        default: 'postdetail'
+      }
+    },
     data () {
       return {
         data: {
+          id: 1,
           imgNum: 0,
           author: {
             nickname: '匿名用户1',
@@ -79,11 +94,23 @@
         }
       }
     },
-    methods:{},
+    methods:{
+      goDetail() {
+        if(this.kind == 'friendpost') {
+          this.$router.push({name:'PostDetail',params:{id:this.data.id}});
+        }
+      }
+    },
     mounted() {
       let m = 15,n = 0;
-      this.data.images = this.data.images.slice(0,parseInt(Math.random()*(m-n-1)+n+1))
-      console.log(this.data.images.length);
+      // this.data.images = this.data.images.slice(0,parseInt(Math.random()*(m-n-1)+n+1))
+      this.data.images = this.data.images.slice(0,2)
+      // console.log(
+      //   document.getElementsByClassName('card-top')[0].clientHeight+
+      //   document.getElementsByClassName('card-middle')[0].clientHeight+
+      //   document.getElementsByClassName('card-bottom')[0].clientHeight
+      // );
+      console.log(document.getElementsByClassName('card-middle')[0].clientHeight);
     }
   }
 </script>
@@ -91,6 +118,7 @@
 <style scoped>
   .friend-post {
     width: 100vw;
+    height: auto;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -160,6 +188,18 @@
   .card-middle .imgOne img {
     width: 60vw;
     height: 60vw;
+  }
+  .card-middle .imgTwo {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    position: relative;
+    justify-content: space-between;
+  }
+  .card-middle .imgTwo img {
+    width: calc((100vw - 60px) / 2);
+    height: calc((100vw - 60px) / 2);
   }
   .card-middle .imgMuch {
     width: 100%;
