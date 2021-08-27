@@ -110,7 +110,6 @@
       //   document.getElementsByClassName('card-middle')[0].clientHeight+
       //   document.getElementsByClassName('card-bottom')[0].clientHeight
       // );
-      console.log(document.getElementsByClassName('card-middle')[0].clientHeight);
     }
   }
 </script>

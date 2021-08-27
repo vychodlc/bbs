@@ -7,9 +7,8 @@
         <img src="~assets/images/icons/more.png" alt="">
       </div>
     </div>
-    <!-- <div class="post-head-placeholder">121</div> -->
-    <scroller :on-refresh="refresh" ref="my_scroller" id="scroller">
-      <friend-post :kind='kind'></friend-post>
+    <scroller :on-refresh="refresh" ref="my_scroller" style="margin-top: 50px;" class="my_scroller">
+      <friend-post :kind='kind' id="friendPost"></friend-post>
       <div class="comment-head" id="commentHead">
         <div :class="currentTab==0?'active':'item'" id="appreciate" @click="changeActive(0)">赞 {{data.star_num}}</div>
         <div :class="currentTab==1?'active':'item'" id="comment" @click="changeActive(1)">评论 {{data.star_num}}</div>
@@ -36,6 +35,13 @@
       </div>
     </scroller>
     <div class="add-comment"></div>
+
+    
+    <div class="comment-head" id="commentHeadFixed" v-show="showCommentHead">
+      <div :class="currentTab==0?'active':'item'" id="appreciate" @click="changeActive(0)">赞 {{data.star_num}}</div>
+      <div :class="currentTab==1?'active':'item'" id="comment" @click="changeActive(1)">评论 {{data.star_num}}</div>
+      <div :class="currentTab==2?'active':'item'" id="share" @click="changeActive(2)">转发 {{data.star_num}}</div>
+    </div>
   </div>
 </template>
 
@@ -44,7 +50,6 @@
   import { swiper, swiperSlide } from "vue-awesome-swiper";
 
   import "swiper/dist/css/swiper.css";
-
   export default {
     name: "PostDeatail",
     components: {
@@ -60,6 +65,8 @@
         isRefresh: false,
         currentTab: 0,
         kind: 'postdetail',
+
+        showCommentHead: false,
       }
     },
     methods:{
@@ -81,19 +88,41 @@
         };
         if(this.isRefresh==true) {
           this.isRefresh = false;
-          this.$refs.my_scroller.finishPullToRefresh()
+          setTimeout(() => {
+            this.$refs.my_scroller.finishPullToRefresh()
+          }, 1000);
         }
       },
       changeActive(index) {
-        this.currentTab = index;
-        document.getElementById('appreciate').className = index==0?'active':'item';
-        document.getElementById('comment').className = index==1?'active':'item';
-        document.getElementById('share').className = index==2?'active':'item';
+        if(index!=this.currentTab) {
+          this.currentTab = index;
+          if(document.getElementById('appreciate'))document.getElementById('appreciate').className = index==0?'active':'item';
+          if(document.getElementById('comment'))document.getElementById('comment').className = index==1?'active':'item';
+          if(document.getElementById('share'))document.getElementById('share').className = index==2?'active':'item';
+
+          this.$refs.my_scroller.scrollTo(0,0);
+          this.showCommentHead = false;
+        }
+      },
+      showHead() {
+        if(this.$refs.my_scroller) {
+          let pos = this.$refs.my_scroller.getPosition().top;
+          console.log(pos);
+          if(document.getElementById('friendPost')) {
+            let height = document.getElementById('friendPost').clientHeight;
+            this.showCommentHead = pos > height;
+          }
+        }
       }
     },
     mounted() {
       this.data.id = this.$route.params.id?this.$route.params.id:2;
       this.getData()
+      // window.addEventListener('scroll',this.showHead,true)
+      document.getElementsByClassName('my_scroller')[0].addEventListener("transitionend",this.showHead,true)
+    },
+    destroyed() {
+      // window.removeEventListener('scroll',this.showHead)
     }
   }
 </script>
@@ -150,7 +179,6 @@
     display: flex;
     flex-direction: row;
     background-color: #fff;
-    position: relative;
   }
   .comment-head .item {
     font-size: 14px;
@@ -175,18 +203,20 @@
     border-bottom: 1px solid var(--color-all);
     font-weight: 550;
   }
-  #share {
-    position: absolute;
-    right: 0;
-    top: 0;
+  #commentHeadFixed {
+    position: fixed;
+    z-index: 8000;
+    left: 0;
+    top: 50px;
   }
-
-  #scroller {
-    margin-top: 50px;
+  #share {
+    /* position: absolute;
+    right: 0;
+    top: 0; */
   }
 
   .comment-content {
-
+    padding-bottom: 50px;
   }
   .comment-content .content:nth-child(1) {
     
