@@ -11,11 +11,24 @@
       <friend-post :kind='kind' id="friendPost"></friend-post>
       <div class="comment-head" id="commentHead">
         <div :class="currentTab==0?'active':'item'" id="appreciate" @click="changeActive(0)">赞 {{data.star_num}}</div>
-        <div :class="currentTab==1?'active':'item'" id="comment" @click="changeActive(1)">评论 {{data.star_num}}</div>
-        <div :class="currentTab==2?'active':'item'" id="share" @click="changeActive(2)">转发 {{data.star_num}}</div>
+        <div :class="currentTab==1?'active':'item'" id="comment" @click="changeActive(1)">评论 {{data.comment_num}}</div>
+        <div :class="currentTab==2?'active':'item'" id="share" @click="changeActive(2)">转发 {{data.share_num}}</div>
       </div>
       <div class="comment-content">
         <div class="content" v-if="currentTab==0 && data.star_num!=0">
+          <div class="content-item" v-for="(item,index) in 10" :key="index">
+            <div class="avatar">
+              <img src="~assets/images/icons/favor.png" alt="">
+            </div>
+            <div class="userinfo">
+              <div class="infoitem">
+                <div class="nickname">匿名用户</div>
+                <div class="time">匿名用户的23123123自我介绍</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="content" v-if="currentTab==1 && data.comment_num!=0">
           <div class="content-item" v-for="(item,index) in 10" :key="index">
             <div class="avatar">
               <img src="~assets/images/icons/favor.png" alt="">
@@ -32,6 +45,22 @@
             </div>
           </div>
         </div>
+        <div class="content" v-if="currentTab==2 && data.share_num!=0">
+          <div class="content-item" v-for="(item,index) in 10" :key="index">
+            <div class="avatar">
+              <img src="~assets/images/icons/favor.png" alt="">
+            </div>
+            <div class="userinfo">
+              <div class="infoitem">
+                <div class="nickname">匿名用户</div>
+                <div class="time">8分钟前</div>
+              </div>
+              <div class="infoitem">
+                <div class="intro">匿名用户的自我介绍匿名用户的自我介绍匿名用户的自我介绍匿名用户的自我介绍匿名用户的自我介绍匿名用户的自我介绍匿名用户的自我介绍匿名用户的自我介绍匿名用户的自我介绍匿名用户的自我介绍匿名用户的自我介绍匿名用户的自我介绍</div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </scroller>
     <div class="add-comment"></div>
@@ -39,8 +68,8 @@
     
     <div class="comment-head" id="commentHeadFixed" v-show="showCommentHead">
       <div :class="currentTab==0?'active':'item'" id="appreciate" @click="changeActive(0)">赞 {{data.star_num}}</div>
-      <div :class="currentTab==1?'active':'item'" id="comment" @click="changeActive(1)">评论 {{data.star_num}}</div>
-      <div :class="currentTab==2?'active':'item'" id="share" @click="changeActive(2)">转发 {{data.star_num}}</div>
+      <div :class="currentTab==1?'active':'item'" id="comment" @click="changeActive(1)">评论 {{data.comment_num}}</div>
+      <div :class="currentTab==2?'active':'item'" id="share" @click="changeActive(2)">转发 {{data.share_num}}</div>
     </div>
   </div>
 </template>
@@ -107,7 +136,6 @@
       showHead() {
         if(this.$refs.my_scroller) {
           let pos = this.$refs.my_scroller.getPosition().top;
-          console.log(pos);
           if(document.getElementById('friendPost')) {
             let height = document.getElementById('friendPost').clientHeight;
             this.showCommentHead = pos > height;
@@ -119,10 +147,12 @@
       this.data.id = this.$route.params.id?this.$route.params.id:2;
       this.getData()
       // window.addEventListener('scroll',this.showHead,true)
-      document.getElementsByClassName('my_scroller')[0].addEventListener("transitionend",this.showHead,true)
+      // document.getElementsByClassName('my_scroller')[0].addEventListener("transitionend",this.showHead,true)
+      let showHeadInterval = setInterval(()=>this.showHead(),100)
     },
     destroyed() {
       // window.removeEventListener('scroll',this.showHead)
+      clearInterval(showHeadInterval)
     }
   }
 </script>
@@ -207,7 +237,7 @@
     position: fixed;
     z-index: 8000;
     left: 0;
-    top: 50px;
+    top: 48px;
   }
   #share {
     /* position: absolute;
@@ -218,55 +248,55 @@
   .comment-content {
     padding-bottom: 50px;
   }
-  .comment-content .content:nth-child(1) {
+  .comment-content .content {
     
   }
-  .comment-content .content:nth-child(1) .content-item {
+  .comment-content .content .content-item {
     width: 100%;
     background-color: #fff;
     padding: 5px 10px;
     display: flex;
     flex-direction: row;
   }
-  .comment-content .content:nth-child(1) .content-item .avatar {
+  .comment-content .content .content-item .avatar {
     width: 40px;
     height: 40px;
   }
-  .comment-content .content:nth-child(1) .content-item .avatar img {
+  .comment-content .content .content-item .avatar img {
     width: 40px;
     height: 40px;
     border-radius: 50%;
   }
-  .comment-content .content:nth-child(1) .content-item .userinfo {
+  .comment-content .content .content-item .userinfo {
     padding-left: 10px;
     /* height: 100px; */
     display: flex;
     flex-direction: column;
   }
-  .comment-content .content:nth-child(1) .content-item .userinfo .infoitem:nth-child(1) {
+  .comment-content .content .content-item .userinfo .infoitem:nth-child(1) {
     height: 40px;
     display: flex;
     flex-direction: column;
     line-height: 20px;
     position: relative;
   }
-  .comment-content .content:nth-child(1) .content-item .userinfo .infoitem:nth-child(1) .appreciate {
+  .comment-content .content .content-item .userinfo .infoitem:nth-child(1) .appreciate {
     position: absolute;
     right: 0;
     top: 0;
   }
-  .comment-content .content:nth-child(1) .content-item .userinfo .infoitem:nth-child(1) img {
+  .comment-content .content .content-item .userinfo .infoitem:nth-child(1) img {
     width: 20px;
     height: 20px;
   }
-  .comment-content .content:nth-child(1) .content-item .userinfo .nickname {
+  .comment-content .content .content-item .userinfo .nickname {
     font-weight: 550;
     letter-spacing: 1px;
   }
-  .comment-content .content:nth-child(1) .content-item .userinfo .time {
+  .comment-content .content .content-item .userinfo .time {
     color: #999;
   }
-  .comment-content .content:nth-child(1) .content-item .userinfo .intro {
+  .comment-content .content .content-item .userinfo .intro {
     letter-spacing: 1px;
     line-height: 18px;
     padding: 10px 0;
